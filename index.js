@@ -1,7 +1,7 @@
-//問題、選択肢、回答の
+//問題、選択肢、回答のオブジェクト
 const quiz = [
   {
-    question: '嵐のメンバーである松本潤の、エアコンの設定温度は？',
+    question: '嵐のメンバーである松本潤の、エアコンの設定温度は次のうちどれ？',
     answers: [
       '25',
       '26', 
@@ -14,21 +14,31 @@ const quiz = [
     question: '嵐の中で唯一東京都出身じゃ無い相葉雅紀の出身地は、千葉県のどこ？',
     answers: [
       '美浜区', 
-      '中央区', 
       '千葉市', 
+      '中央区', 
       '市原市',
     ],
     correct: '千葉市',
   },
   {
-    question: 'ファイナルファンタジーⅣの主人公の名前は？',
+    question: '日本史上最大規模のツアーとなった、アイドルグループ「嵐」の20周年記念コンサートの公演数は次のうちどれ？',
     answers: [
-      'フリオニール', 
-      'クラウド', 
-      'ティーダ', 
-      'セシル',
+      '50',
+      '30', 
+      '40', 
+      '20', 
     ],
-    correct: 'セシル',
+    correct: '50',
+  },
+  {
+    question: '嵐の冠番組の中で、放送年数が最も長い番組は次のうちどれ？',
+    answers: [
+      '嵐の宿題くん',
+      'VS嵐',
+      'ひみつの嵐ちゃん',
+      '嵐にしやがれ',
+    ],
+    correct: 'VS嵐',
   },
 ];
 
@@ -53,10 +63,9 @@ const setupQuiz = () => {
 setupQuiz();
 
 
-
 //ボタンをクリックしたら正誤を判定
 const clickHandler = (e) => {
-  if(quiz[quizIndex].correct === e.target.textContent) {
+  if (quiz[quizIndex].correct === e.target.textContent) {
     window.alert('正解！');
     score++;
   } else {
@@ -65,16 +74,15 @@ const clickHandler = (e) => {
 
   quizIndex++;
 
-  if(quizIndex < quizLength) {
+  if (quizIndex < quizLength) {
     setupQuiz();
   } else {
-    window.alert('終了！あなたの正解数は' + score + '/' + quizLength + 'です！');
+    window.alert('終了！あなたの正解数は' + quizLength + '問中' + score + '問です！');
     if (window.confirm('最初の問題に戻りますか？') === true) {
       location.reload();
     }
   }
 };
-
 
 let handlerIndex = 0;
 while (handlerIndex < buttonLength) {
